@@ -26,42 +26,39 @@ def prenom(rep_defaut, memoire, msg_user, match_regex):
 
 
 regles_V1 = [ #Ensembles des règles pour le chatbot
-    ["Règle Salutation", "[bB]onjour|[sS]alut", "Bonjour humain, je suis PAM, comment t'appelles-tu?"],
-    ["Règle Au revoir", "[aA]u revoir|[bB]ye", "Bye bye humain!"],
-    ["Règle ILM", "I love myself", "I love me!"], 
-    ["Règle DUNNO", "", "I don't know what to say..."]
+    ["Règle Salutation", "bonjour|salut", "Bonjour humain comment t'appelles-tu?"],
+    ["Règle Au revoir", "au revoir|bye", "Au revoir humain!"],
+    ["regle capable", "capable", "Je peux vous parler des futurs JO, mais je sais aussi calculer"],
+    ["Règle défaut", "", "I don't know what to say..."]
 ]
 
 regles_V2 = [ #Nom de la fonction, priorité, pattern, réponse, fonction
-    ["Règle Salutation", 2, "[bB]onjour|[sS]alut", "Bonjour humain, je suis PAM, comment t'appelles-tu?", None],
-    ["Règle Au revoir", 1, "[aA]u revoir|[bB]ye", "Bye bye humain!", None],
-    ["Règle ILM", 6, "I love myself", "I love me!", None], 
-    ["Règle calcul", 4, "[cC]alcul*", "Vous voulez calculer, allons-y : ", addition],
-    ["Règle jeu nombre aléatoire", 5, "[jJ]ouer", "Très bien, jouons!", nombre_mystere],
-    ["Règle prénom", 3, "[jJ]e m'appelle", "Bienvenu", prenom],
-    ["Règle DUNNO", 7, "", "I don't know what to say...", None]
+    ["Règle Salutation", 2, "bonjour|salut", "Bonjour humain, comment t'appelles-tu?", None],
+    ["Règle Au revoir", 1, "au revoir|bye", "Au revoir humain!", None],
+    ["regle capable", 6, "capable", "Je peux vous parler des futurs JO, mais je sais aussi calculer",None],
+    ["Règle calcul", 4, "calcul*", "Vous voulez calculer, allons-y : ", addition],
+    ["Règle jeu nombre aléatoire", 5, "jouer", "Très bien, jouons!", nombre_mystere],
+    ["Règle prénom", 3, "je m'appelle", "Bienvenue", prenom],
+    ["Règle défaut", 7, "", "I don't know what to say...", None] #patterne vide donc toutes les entrées utilisateurs déclencheront cette regle
 ]
 
 print(">>> Vous commencez votre conversation avec PAM. Pour quitter la conversation entrez 0.")
 User_data = {}
-
-while True:
+Boucle=True
+while Boucle:
     User_Input = str(input("> "))
-    if User_Input == "0":
-        break
+    if User_Input == "0": 
+        Boucle=False #on quitte la boucle si l'utilisateur rentre "0"
     else:
-        trouve = False
 
         for regle in regles_V2:
-            pattern = re.compile(regle[2])
-            if re.search(pattern, User_Input):
-                print(f"\n{regle[3]}") #Pour les réponse avec fonction, ça fait doublon ici !
-                trouve = True
-                if regle[-1] != None:
-                    regle[-1](regle[-2], User_data, User_Input, re.search(pattern, User_Input))
-                break
+            pattern = re.compile(regle[2],re.IGNORECASE) #compile les patternes dans les regles en expressions regex (majuscules ignorées par re.IGNORECASE)
+            if re.search(pattern, User_Input): #cherche le pattern dans l'entrée utilisateur
+                print(f"\n{regle[3]}") #Si le pattern est trouvé alors on print la réponse appropriée
 
-        if not trouve:
-            print(f"\n{regles_V2[-1][3]}")
+                if regle[-1] != None: #si la regle nécéssite l'utilisation d'une fonction tierce
+                    regle[-1](regle[-2], User_data, User_Input, re.search(pattern, User_Input)) #alors on apelle la fonctions
+                Boucle=False
+
 
 print("\n>>> Fin de la conversation.")
