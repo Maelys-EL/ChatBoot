@@ -29,17 +29,18 @@ regles_V1 = [ #Ensembles des règles pour le chatbot
     ["Règle Salutation", "bonjour|salut", "Bonjour humain comment t'appelles-tu?"],
     ["Règle Au revoir", "au revoir|bye", "Au revoir humain!"],
     ["regle capable", "capable", "Je peux vous parler des futurs JO, mais je sais aussi calculer"],
-    ["Règle défaut", "", "I don't know what to say..."]
+    ["Règle défaut", "", "Je ne sais pas quoi répondre..."]
 ]
 
 regles_V2 = [ #Nom de la fonction, priorité, pattern, réponse, fonction
     ["Règle Salutation", 2, "bonjour|salut", "Bonjour humain, comment t'appelles-tu?", None],
     ["Règle Au revoir", 1, "au revoir|bye", "Au revoir humain!", None],
     ["regle capable", 6, "capable", "Je peux vous parler des futurs JO, mais je sais aussi calculer",None],
+    ["regle  JO",5 , "JO", "Les prochains JO auront lieu à Paris en 2024.",None],
     ["Règle calcul", 4, "calcul*", "Vous voulez calculer, allons-y : ", addition],
     ["Règle jeu nombre aléatoire", 5, "jouer", "Très bien, jouons!", nombre_mystere],
     ["Règle prénom", 3, "je m'appelle", "Bienvenue", prenom],
-    ["Règle défaut", 7, "", "I don't know what to say...", None] #patterne vide donc toutes les entrées utilisateurs déclencheront cette regle
+    ["Règle défaut", 7, "", "Je ne sais pas quoi répondre...", None] #patterne vide donc toutes les entrées utilisateurs déclencheront cette regle
 ]
 
 print(">>> Vous commencez votre conversation avec PAM. Pour quitter la conversation entrez 0.")
@@ -57,8 +58,8 @@ while Boucle:
                 print(f"\n{regle[3]}") #Si le pattern est trouvé alors on print la réponse appropriée
 
                 if regle[-1] != None: #si la regle nécéssite l'utilisation d'une fonction tierce
-                    regle[-1](regle[-2], User_data, User_Input, re.search(pattern, User_Input)) #alors on apelle la fonctions
-                Boucle=False
+                    regle[-1](regle[-2], User_data, User_Input, re.search(pattern, User_Input)) #alors on appelle la fonction
+                break
 
 
 print("\n>>> Fin de la conversation.")
