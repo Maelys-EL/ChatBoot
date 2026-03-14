@@ -2,25 +2,37 @@ import re
 import random
 
 def addition(rep_defaut, memoire, msg_user, match_regex): #fonction qui permet de calculer deux nombres
-    print("Veuillez saisir votre calcul (ex : 5+9): ")
-    a = int(input(""))
-    print("+")
-    b = int(input(""))
+    print("Saisissez le premier nombre :")
+    a = input("")
+    try: a=int(a) #vérifie que l'entrée est un nombre
+    except ValueError:
+        print("ce n'est pas un nombre")
+        return
+    
+    print("Saisissez le second nombre :")
+    b = input("")
+    try: b=int(b) #vérifie que l'entrée est un nombre
+    except ValueError:
+        print("ce n'est pas un nombre")
+        return
     print(f"{a}+{b}= {a+b}")
 
 def nombre_mystere(rep_defaut, memoire, msg_user, match_regex):
     nb_alea = random.randint(0, 10)
-    print(nb_alea)
-    reponse = int(input("Essayez de trouver le nombre auquel je pense...(Indice : c'est entre 0 et 10) : "))
+    reponse = input("Essayez de trouver le nombre auquel je pense...(Indice : c'est entre 0 et 10) : ")
+    try: reponse=int(reponse) #vérifie que l'entrée est un nombre
+    except ValueError:
+        print("ce n'est pas un nombre")
+        return
+    
     if reponse == nb_alea:
         print("\nBravo! Vous avez gagnez!")
     else:
-        print("\nPerdu ! HAhaaAHHA")
+        print("\nPerdu !")
 
 def prenom(rep_defaut, memoire, msg_user, match_regex):
-    prenom = "Lys"
-    memoire["nom"] = prenom #Il faudrai récupérer ici le mot juste après le match (donc le mot qui s'arrête au prochain espace)
-    print(f"{rep_defaut} {prenom}")
+    memoire["nom"] = msg_user.split()[-1]
+    print("Bienvenue",memoire["nom"])
 
     return memoire
 
@@ -36,12 +48,14 @@ regles_V2 = [ #Nom de la fonction, priorité, pattern, réponse, fonction
     ["Règle Salutation", 2, "bonjour|salut", "Bonjour humain, comment t'appelles-tu?", None],
     ["Règle Au revoir", 1, "au revoir|bye", "Au revoir humain!", None],
     ["regle capable", 6, "capable", "Je peux vous parler des futurs JO, mais je sais aussi calculer",None],
-    ["regle  JO",5 , "JO", "Les prochains JO auront lieu à Paris en 2024.",None],
+    ["regle  JO",5 , r"\bJO\b", "Les prochains JO auront lieu à Paris en 2024.",None], # \b = caracteres qui délimitent un mot soit espace virgule etc.. r devant pour que python ne prenne pas directement les antislash en compte
     ["Règle calcul", 4, "calcul*", "Vous voulez calculer, allons-y : ", addition],
     ["Règle jeu nombre aléatoire", 5, "jouer", "Très bien, jouons!", nombre_mystere],
-    ["Règle prénom", 3, "je m'appelle", "Bienvenue", prenom],
+    ["Règle prénom", 3, "je m'appelle|je suis", "", prenom],
     ["Règle défaut", 7, "", "Je ne sais pas quoi répondre...", None] #patterne vide donc toutes les entrées utilisateurs déclencheront cette regle
 ]
+
+regles_V2.sort(key=lambda list: list[1])
 
 print(">>> Vous commencez votre conversation avec PAM. Pour quitter la conversation entrez 0.")
 User_data = {}
