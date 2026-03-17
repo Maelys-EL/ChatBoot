@@ -1,12 +1,15 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{hyperref}
+\usepackage{float}
 \graphicspath{ {./images/} }
 
 
-\title{Projet Final Git}
-\author{Lily AUBERT, Maelys EL ARAARI, Baptiste MASSON}
-\date{March 2026}
+
+\title{Création d'un chatbot en équipe à l'aide de Git}
+\author{Lily AUBERT, Maelys EL ARAARI, Baptiste MASSON (TD2)}
+\date{Mars 2026}
 
 \begin{document}
 
@@ -14,35 +17,242 @@
 
 \section{Introduction}
 
-Pour réaliser ce rendu, nous avons choisi de réaliser un projet fictif, mais qui reste relié à l'une de nos matières de ce semestre : "Introduction à l'IA". Nous avons donc pris le 2e TD de que nous avons eu dans cette matière pour l'utiliser en tant que base de ce faux projet. Le but du TD était de créer un petit chatbot, capable d'agir en fonction de règles faites avec des expressions régulières.
-Notre faux projet est donc le suivant : Créer un petit chatbot et faire une brève introduction sur l'histoire de l'IA pour pouvoir faire une séance d'initiation à l'IA dans un collège. Le projet sera accompagné d'un site web.
+Pour réaliser ce rendu, nous avons choisi de réaliser un projet fictif, mais qui reste relié à l'une de nos matières de ce semestre : "Introduction à l'IA". Nous avons donc pris le 2e TD que nous avons eu dans cette matière pour l'utiliser en tant que base de ce faux projet. Le but du TD était de créer un petit chatbot, capable d'agir en fonction de règles faites avec des expressions régulières.
+Notre faux projet est donc le suivant : Créer un petit chatbot et faire une brève introduction sur l'histoire de l'IA pour pouvoir faire une séance d'initiation à l'IA dans un collège. Le projet sera accompagné d'un site web. Au niveau de la répartition des tâches : Lily à l'écriture du document sur l'histoire de l'IA, Baptiste à la programmation du code en python et Maelys à la rédaction du compte rendu final et pour le site web, tout le monde pouvait contribuer. 
 
-\section{La mise en place}
+\subsection{La mise en place}
 
-Pour commencer, nous avons mis en place le dépôt distant git. Puis pour faire notre premier commit, nous avons utiliser la fonctionnalité de github pour ajouter des fichiers. 
+Pour commencer, nous avons mis en place le dépôt distant git et fait notre premier commit en utilisant la fonctionnalité de GitHub pour ajouter des fichiers par upload (le premier fichier était un simple PDF du début de ce compte rendu). (Lien du dépôt GitHub : \url{https://GitHub.com/Maelys-EL/ChatBoot}) 
 
-Pour réaliser ce projet, nous avons d'ailleurs essayer d'alterner entre les fonctionnalités en ligne de github et les commandes apprises en cours pour nous permettre d'apprendre et d'être à l'aise avec les deux méthodes. Nous verrons donc dans ce compte rendu le parallèle entre les deux.
+Pour réaliser ce projet, nous avons d'ailleurs essayé d'alterner entre les fonctionnalités en ligne de GitHub et les commandes apprises en cours pour nous permettre d'apprendre et d'être à l'aise avec les deux méthodes. Nous verrons donc dans ce compte rendu le parallèle entre les deux. \\ \\
 
-\includegraphics[width=0.75\textwidth]{images/image1.png}\\
-\includegraphics[width=0.75\textwidth]{images/image2.png}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/image1.png}
+    \caption{Création du dépôt GitHub}
+\end{figure}
 
-- Mise en place de tableau projet
-- Issues
-- Mise en place de label pour les issues
-- Milestones
-- Repartition des taches
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/image2.png}
+    \caption{Aperçu du dépôt GitHub après le premier commit}
+\end{figure} 
+
+[C4] Après avoir mis en place le dépôt distant, il fallait nous organiser pour créer et répartir les tâches. Comme dit précédemment, des rôles ont été attribués à chacun, mais tout le monde pouvait modifier les fichiers si besoin. Nous avons donc utilisé l'outil "Projet" de GitHub.
+Pour créer un projet sur GitHub, il faut cliquer sur l'onglet "Projects" puis créer un nouveau projet en cliquant sur le bouton "New project" et surtout faire attention à relier le projet au dépôt correspondant à notre projet pour que les issues soient partagées.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/image3.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/image4.png}
+    \caption{Création du projet sur GitHub}
+\end{figure}
+
+Après la création, il ne faut pas oublier de partager l'accès aux membres du groupe en allant dans les paramètres du projet et dans l'onglet "Collaborators". 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/image5.png}
+    \caption{Aperçu de l'ajout de membres}
+\end{figure}
+
+Puis, on peut personnaliser les catégories en les modifiants.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/image6.png}
+    \caption{Aperçu du tableau projet modifié}
+\end{figure}
+
+Ce tableau fonctionne de la manière suivante : on crée des tâches (des issues) et on les place simplement dans la colonne correspondante pour visualiser l'avancement du projet.
+Pour créer les différentes issues, nous avons décidé de créer des labels pour les différentes parties du projet : "Python" pour le code, "Compte rendu", "Site web" et "Histoire de l'IA". À chaque nouvelle issue, le label correspondant était assigné. Pour créer un label, il faut aller dans l'onglet "issue" sur GitHub, cliquer sur le bouton labels et puis sur le bouton "New label".
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/labels.png}
+    \caption{Différents labels}
+\end{figure}
+
+Pour créer des issues, il suffit d'aller dans l'onglet "Issues" sur GitHub, puis cliquer sur le bouton "New issue". On donne ensuite un titre, on assigne la tâche à un ou plusieurs membres du groupe et on utilise les labels créés plutôt. On peut aussi le faire via le tableau du projet créé plutôt.\\ \\
+
+
+[C1] Étant donné les délais de réalisation de ce projet, nous n'avons pas pu créer plusieurs milestones, mais nous en avons fait une pour la version finale à rendre le lundi 16/03/2026.
+Pour créer une milestone, il suffit d'aller dans l'onglet "Issues" de GitHub puis cliquer sur le bouton "Milestones" et enfin cliquer sur le bouton "New milestone".
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/milestone1.png}
+\end{figure}
+
+Les issues créées pour cette milestone sont les tâches de test, vérification, de relecture des documents et mise en ligne du site web.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/milestone2.png}
+\end{figure}
+
 
 \section{Réalisation du projet}
 
-- Création d'une branche pour le compte rendu (command lines)
-- Création d'une branche pour le site web (sur github)
-- Résolution d'un conflit
-- 
+[B1] Pour le projet, nous avons décidé de faire une branche pour chaque partie du projet. La branche main pour le code Python et le document sur l'histoire de l'IA, la branche "Compte\_rendu" pour ce document et la branche "Site" pour le site web.
+Nous avons commencé par créer la branche "Compte\_rendu" en ligne de commande.
+On commence par récupérer le dépôt distant avec la commande :
+\begin{verbatim}
+    git clone [URL du dépôt]
+\end{verbatim} 
+Puis on se déplace sur le premier commit pour créer la branche à partir de là, on utilise donc les commandes : 
+\begin{verbatim}
+    git checkout [SHA-1 du 1er commit] 
+    git branch Compte_rendu
+\end{verbatim} 
+Enfin, on se déplace sur la branche avec la commande :
+\begin{verbatim}
+    git checkout Compte_rendu
+\end{verbatim}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/branche1.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/branche2.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/branche3.png}
+\end{figure}
+
+
+Dans l'exemple ci-dessous, le fichier .tex du compte rendu devait être dépôt, donc on utilise les commandes : 
+\begin{verbatim}
+git add [nom-du-fichier]
+git commit -m "Ajoute du fichier Latex"
+\end{verbatim}
+
+On finit par push la branche avec la commande git
+\begin{verbatim}
+    git push origin Compte_rendu
+\end{verbatim}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/branche5.png}
+\end{figure}
+
+
+
+Pour la branche Site, nous l'avons créée sur GitHub. Ici, il suffit de cliquer sur la branche actuelle main et cliquer sur l'option "View all branches". Puis, on clique sur le bouton "New branches".\\ \\
+
+
+[B3] Au cours de notre projet, nous avons dû faire face à un conflit. Un des membres du groupe a modifié un document sans en parler aux autres, un conflit a donc été créé au moment du push sur le dépôt distant.
+Pour le résoudre, il a fallu modifier le fichier, c'est-à-dire effacer les caractères spéciaux et choisir la version voulue. Puis mettre le tout à jour avec un commit et enfin sur le dépôt distant avec les commandes : \begin{verbatim}
+    git add [nom-du-fichier]
+    git commit -m "messages"
+    git push origin main
+\end{verbatim}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/conflit1.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/conflit2.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/conflit3.png}
+    \caption{Résolution du conflit}
+\end{figure}
+
+
+[B3] Après tout ça, il est temps de faire un pull request. Sur la branche "Site" les fichiers "histoire ia.tex" et "td2 introIA.py" ce sont ajoutés. Il faut les supprimer, faire un commit puis faire un pull request via Github pour demander à créer le site. On procède comme suit :
+\begin{verbatim}
+    git fetch --all (permet de recuperer les branches du dépot distant)
+    git branch -a
+    git checkout Site
+    rm *
+    git add .
+    git commit -m "Suppression des fichiers de la branche site"
+    git push origin Site
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/pullrequest.png}
+    \caption{Branche et suppression de fichiers}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/pullrequest2.png}
+    \caption{Création d'un pull request}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/pullrequest3.png}
+\end{figure}
+
+
 
 \section{Finalisation}
-- Mise en ligne du site web
-- Relecture et dernier commit
+
+[B4] Après avoir créé la branche pour le site web et déposé les fichiers correspondants, il fallait le mettre en ligne. Pour cela, nous avons utilisé les fonctionnalités de GitHub. 
+Pour créer un site sur GitHub, on doit aller sur l'onglet "Settings" puis cliquer sur l'onglet "Pages" et choisir la branche dans laquelle se trouvent les fichiers pour le site web. Finalement, on clique sur le bouton "Save" pour le publier. (Lien du site : \url{https://maelys-el.github.io/ChatBoot/})
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/siteweb1.png}
+    \caption{Création du site}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/siteweb2.png}
+    \caption{Page du site web en ligne}
+\end{figure}
+
+[B2] Comme dit précédemment, nous avons choisi de faire une seule version du projet : la version finale. Il n'y a pas eu de version intermédiaire donc nous avons seulement créé un tag pour les commits finaux. 
+Pour créer un tag, nous avons fait comme suit :
+\begin{verbatim}
+    git log (pour récuperer le nom du commit sur le quel mettre le tag)
+    git tag -a vFinal [numéro du commit]
+    
+    (Ouvre un éditeur de texte dans le quel écrire le message du tag, ':w' 
+    pour sauvegarder et entrée pour quitter)
+    git show vFinal (pour vérifier sur quoi porte le tag)
+    git push origin vFinal
+\end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/tag.png}
+    \caption{Création d'un tag}
+\end{figure}
 
 
+Pour finir, nous avons publié la version finale en créant une release sur GitHub.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/siteweb1.png}
+    \caption{Création d'un tag}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.50\textwidth]{images/tag.png}
+    \caption{Création d'un tag}
+\end{figure}
+
+\section{Conclusion}
+
+Avec ce projet, nous avons pu mettre en place les connaissances vues en cours dans un contexte concret et appris à utiliser GitHub. Le projet nous a aussi permis de travailler en groupe pour une durée limitée. Le projet nous a aussi donné envie d'utiliser Git et GitHub plus au quotidien. Lily dit vouloir contribuer à des projets sur GitHub dans le futur et Maelys et Baptiste disent vouloir utiliser Git pour leur projet personnel et/ou universitaire.
 
 \end{document}
