@@ -1,0 +1,94 @@
+body{
+    margin-top: 100px;
+}
+
+body> *:not(#header1, footer){
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+footer{
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+#header1{
+    position: fixed;       
+    top: 0;                
+    left: 0;
+    width: 100%;           
+    height: 40px;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid;
+    border-width: 2px;
+    border-color: #b9b9b9;
+    background-color: rgb(230, 229, 229);
+    display: flex;
+    z-index: 100;
+}
+
+img> *:not(.size_locked){
+  max-width: 100%;
+  height: auto;
+  opacity: 0.1;
+}
+
+h1{
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+}
+
+#auteurs{
+    position: relative;
+    top: -10px;
+    right: 7px;
+    margin-left: auto;
+
+}
+
+.auteur{
+    margin: 0px;
+}
+
+#page_choice{
+    display: flex;
+}
+
+#search_bar_input{
+    position: relative;
+    margin-bottom: 5px;
+    left: 47.9%;
+    transform: translateX(-50%);
+    width: 95%;
+}
+
+.image_disks{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+}
+
+#formulaire_ajout{
+    background-color: #c7c7c7;
+    padding: 10px;
+}
+
+#text{
+    width: 99%;
+}
+
+.no_button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
